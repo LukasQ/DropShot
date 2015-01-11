@@ -40,12 +40,10 @@ void loop() {
 
   //Start the shooting
   if(digitalRead(SWITCH) && done == false){
- //noInterrupts();
+    //noInterrupts();
     shoot();
-    Serial.println("shoot!");
     delay(100); // wait for mechanical camera parts 
     valve();
-    Serial.println("value opende");
     done=true;
   }
 
@@ -53,7 +51,8 @@ void loop() {
   if(analogRead(TRIGGER) > value){
     delay(FLASHDELAY);
     flash();
-    Serial.println("flash!");
+    delay(1000);
+    done = false; // reenable
   }
 }
 
@@ -63,6 +62,8 @@ void shoot(){
   delay(60);
   digitalWrite(SHUTTER, LOW);
   done = true;
+  Serial.println("shoot!");
+
 }
 
 //Flash light function
@@ -70,9 +71,7 @@ void flash(){
   digitalWrite(FLASH, HIGH);
   delay(60);
   digitalWrite(FLASH, LOW);
-  
-  //delay(1000);
-  //done = false; // reenable
+  Serial.println("flash!");
 }
 
 //Valve open function
@@ -81,5 +80,5 @@ void valve(){
   delay(DROPSIZE);
   digitalWrite(VALVE, LOW);
   done = true;
+  Serial.println("value opende");
 }
-
