@@ -36,16 +36,16 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(analogRead(TRIGGER)); //Write the value of the photoresistor to the serial monitor.
+  //Serial.println(analogRead(TRIGGER)); //Write the value of the photoresistor to the serial monitor.
 
   //Start the shooting
   if(digitalRead(SWITCH) && done == false){
  //noInterrupts();
     shoot();
-    Serial.print("shoot!");
+    Serial.println("shoot!");
     delay(100); // wait for mechanical camera parts 
     valve();
-    Serial.print("value opende");
+    Serial.println("value opende");
     done=true;
   }
 
@@ -53,7 +53,7 @@ void loop() {
   if(analogRead(TRIGGER) > value){
     delay(FLASHDELAY);
     flash();
-    Serial.print("flash!");
+    Serial.println("flash!");
   }
 }
 
@@ -82,3 +82,4 @@ void valve(){
   digitalWrite(VALVE, LOW);
   done = true;
 }
+
