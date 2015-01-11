@@ -9,6 +9,8 @@
 #define FLASHDELAY 105 // Delay between trigger and flash
 //Usually t= sqrt((2h)/9,81)
 
+// No interrupt neaded. Timing is @ 16Mhz fair accurate
+
 int value = 0;
 boolean done = false;
 
@@ -77,3 +79,4 @@ void valve(){
   digitalWrite(VALVE, LOW);
   done = true;
 }
+
