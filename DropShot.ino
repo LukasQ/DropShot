@@ -6,7 +6,7 @@
 #define SWITCH 8 // Trigger button to open the valve
 
 #define DROPSIZE 90 // Valve open time
-#define FLASHDELAY 105 // Delay between trigger and flash
+#define FLASHDELAY 180 // Delay between trigger and flash
 //Usually t= sqrt((2h)/9,81)
 
 // No interrupt neaded. Timing is @ 16Mhz fair accurate
@@ -40,6 +40,7 @@ void loop() {
 
   //Start the shooting
   if(digitalRead(SWITCH) && done == false){
+ //noInterrupts();
     shoot();
     Serial.print("shoot!");
     delay(100); // wait for mechanical camera parts 
@@ -69,7 +70,9 @@ void flash(){
   digitalWrite(FLASH, HIGH);
   delay(60);
   digitalWrite(FLASH, LOW);
-  done = true;
+  
+  //delay(1000);
+  //done = false; // reenable
 }
 
 //Valve open function
@@ -79,4 +82,3 @@ void valve(){
   digitalWrite(VALVE, LOW);
   done = true;
 }
-
