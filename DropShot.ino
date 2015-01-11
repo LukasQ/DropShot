@@ -5,8 +5,8 @@
 #define VALVE 6 // Valve Output Pin -> Transistor
 #define SWITCH 8 // Trigger button to open the valve
 
-#define DROPSIZE 200 // Valve open time
-#define FLASHDELAY 201 // Delay between trigger and flash
+#define DROPSIZE 90 // Valve open time
+#define FLASHDELAY 105 // Delay between trigger and flash
 //Usually t= sqrt((2h)/9,81)
 
 int value = 0;
@@ -34,20 +34,23 @@ void setup() {
 }
 
 void loop() {
-  //Debug: Serial.println(analogRead(TRIGGER)); //Write the value of the photoresistor to the serial monitor.
-  
+  Serial.println(analogRead(TRIGGER)); //Write the value of the photoresistor to the serial monitor.
+
   //Start the shooting
   if(digitalRead(SWITCH) && done == false){
+    shoot();
+    Serial.print("shoot!");
+    delay(100); // wait for mechanical camera parts 
     valve();
     Serial.print("value opende");
     done=true;
   }
 
-// If trigger -> make a photo
+  // If trigger -> make a photo
   if(analogRead(TRIGGER) > value){
-    shoot();
     delay(FLASHDELAY);
     flash();
+    Serial.print("flash!");
   }
 }
 
