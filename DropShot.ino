@@ -5,7 +5,7 @@
 #define VALVE 6 // Valve Output Pin -> Transistor
 #define SWITCH 8 // Trigger button to open the valve
 
-#define DROPSIZE 90 // Valve open time
+#define DROPSIZE 90 // Valve open time Test: 90ms@9,1V
 #define FLASHDELAY 180 // Delay between trigger and flash
 //Usually t= sqrt((2h)/9,81)
 
