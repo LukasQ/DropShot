@@ -1,6 +1,6 @@
 #define LED 13 //LED Pin for Status
-#define FLASH 2 // Optocouppler PIN for the flash
-#define SHUTTER 4 // Optocouppler Pin for the shutter
+#define FLASH 2 // Optocoupler PIN for the flash
+#define SHUTTER 4 // Optocoupler Pin for the shutter
 #define TRIGGER 0 // Lightbar receiver to start the rec
 #define VALVE 6 // Valve Output Pin -> Transistor
 #define SWITCH 8 // Trigger button to open the valve
@@ -9,7 +9,7 @@
 #define FLASHDELAY 180 // Delay between trigger and flash
 //Usually t= sqrt((2h)/9,81)
 
-// No interrupt neaded. Timing is @ 16Mhz fair accurate
+// No interrupt neaded. Timing is @ 16Mhz fairly accurate
 
 int value = 0;
 boolean done = false;
@@ -37,6 +37,8 @@ void setup() {
 
 void loop() {
   //Serial.println(analogRead(TRIGGER)); //Write the value of the photoresistor to the serial monitor.
+
+  //insert here analogRead(POTI) to controll manually the delay for valve and trigger.
 
   //Start the shooting
   if(digitalRead(SWITCH) && done == false){
